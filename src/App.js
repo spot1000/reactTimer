@@ -15,30 +15,53 @@ class App extends Component {
       time : 974,
       p1active:true,
       p2active:false,
-      message : ''
+      message : '',
+      pause:false,
+      lastActive: 'p1'
     }
     this.switchActive = this.switchActive.bind(this);
+    this.pause = this.pause.bind(this);
   }
 
   switchActive() {
-    if(this.state.p1active) {
+    if(!this.state.pause){
+      if(this.state.p1active) {
+        this.setState({
+          p2active:true,
+          p1active:false,
+          lastActive:'p2'
+        });
+      } else {
+        this.setState({
+          p2active:false,
+          p1active:true,
+          lastActive:'p1'
+        });
+      }  
+    }
+  }
+
+  pause() {
+    if(this.state.pause) {
       this.setState({
-        p2active:true,
-        p1active:false
-      });
+        pause:false
+      })
+      this.state.lastActive === 'p1' ? this.setState({p1active : true}) : this.setState({p2active : true})
     } else {
       this.setState({
         p2active:false,
-        p1active:true
-      });
+        p1active:false,
+        pause:true
+      })
     }
+  }
+
 
     // this.setState({
     //   playerOne:'Mark'
     // })
 
 
-  }
 
   render() {
     return (
@@ -61,6 +84,10 @@ class App extends Component {
           <Button
             onClick={this.switchActive}
             name='switch'
+          />
+          <Button
+            onClick={this.pause}
+            name='pause'
           />
         </div>
       </div>
