@@ -7,10 +7,7 @@ export class PlayerTime extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: props.name,
-      time: props.time,
-      active:props.active
-
+      time: props.time
     }
     this.stopTime = this.stopTime.bind(this);
   }
@@ -49,7 +46,7 @@ export class PlayerTime extends Component {
     return (
       <div>
       <Timer
-        name={this.state.name}
+        name={this.props.name}
         time={this.state.time}
       />
       <Button name={'stop'} onClick={this.stopTime} />
