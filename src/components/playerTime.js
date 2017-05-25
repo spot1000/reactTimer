@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Timer} from './Timer';
-import {Button} from './Button';
 
 
 export class PlayerTime extends Component {
@@ -49,7 +48,6 @@ export class PlayerTime extends Component {
         name={this.props.name}
         time={this.state.time}
       />
-      <Button name={'stop'} onClick={this.stopTime} />
       </div>
     );
   }

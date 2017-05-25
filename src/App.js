@@ -21,6 +21,7 @@ class App extends Component {
     }
     this.switchActive = this.switchActive.bind(this);
     this.pause = this.pause.bind(this);
+    this.stop = this.stop.bind(this);
   }
 
   switchActive() {
@@ -37,7 +38,7 @@ class App extends Component {
           p1active:true,
           lastActive:'p1'
         });
-      }  
+      }
     }
   }
 
@@ -55,6 +56,19 @@ class App extends Component {
       })
     }
   }
+
+  stop() {
+    if (this.state.p1active | this.state.p2active) {
+      this.setState({
+        p2active:false,
+        p1active:false
+      });
+    } else {
+      this.state.lastActive === 'p1' ? this.setState({p1active : true}) : this.setState({p2active : true})
+    }
+  }
+
+
 
 
     // this.setState({
@@ -87,7 +101,7 @@ class App extends Component {
           />
           <Button
             onClick={this.pause}
-            name='pause'
+            name={this.state.pause ? 'Resume' : "Pause"}
           />
         </div>
       </div>

@@ -1,7 +1,5 @@
 
 import React, { PureComponent } from 'react';
-import {Display} from './Display'
-
 
 export class Timer extends PureComponent {
   // constructor(props) {
@@ -23,12 +21,13 @@ export class Timer extends PureComponent {
   // }
 
   render () {
-    const myState=this.props
     return (
       <div>
-        <h1>{this.props.time}</h1>
-        <Display objectState={myState} />
+        <h1>{this.props.name}</h1>
+
+        <p>{Math.floor(this.props.time/(Math.pow(60,2)))} : {Math.floor(this.props.time/60)%60} : {this.props.time%60}</p>
       </div>
+
     );
   }
 }
